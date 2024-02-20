@@ -37,7 +37,7 @@ public:
   void PublishMarkers();
 
 private:
-  const std::string kWorldFrameID = "map";
+  const std::string kWorldFrameID = "world";
   bool kExploringSubspaceMarkerColorGradientAlpha;
   double kExploringSubspaceMarkerColorMaxAlpha;
   std_msgs::ColorRGBA kExploringSubspaceMarkerColor;

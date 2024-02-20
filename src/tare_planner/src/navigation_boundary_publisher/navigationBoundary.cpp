@@ -98,7 +98,7 @@ int main(int argc, char** argv)
 
   ros::Publisher pubBoundary = nh.advertise<geometry_msgs::PolygonStamped>("/navigation_boundary", 5);
   geometry_msgs::PolygonStamped boundaryMsgs;
-  boundaryMsgs.header.frame_id = "map";
+  boundaryMsgs.header.frame_id = "world";
 
   // read boundary from file
   if (sendBoundary)

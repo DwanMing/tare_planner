@@ -80,7 +80,7 @@ struct planning_env_ns::PlanningEnvParameters
 class planning_env_ns::PlanningEnv
 {
 public:
-  PlanningEnv(ros::NodeHandle nh, ros::NodeHandle nh_private, std::string world_frame_id = "map");
+  PlanningEnv(ros::NodeHandle nh, ros::NodeHandle nh_private, std::string world_frame_id = "world");
   ~PlanningEnv() = default;
   double GetPlannerCloudResolution()
   {

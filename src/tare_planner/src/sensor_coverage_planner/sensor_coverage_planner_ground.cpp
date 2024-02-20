@@ -413,7 +413,7 @@ void SensorCoveragePlanner3D::SendInitialWaypoint()
   double dy = sin(pd_.robot_yaw_) * lx + cos(pd_.robot_yaw_) * ly;
 
   geometry_msgs::PointStamped waypoint;
-  waypoint.header.frame_id = "map";
+  waypoint.header.frame_id = "world";
   waypoint.header.stamp = ros::Time::now();
   waypoint.point.x = pd_.robot_position_.x + dx;
   waypoint.point.y = pd_.robot_position_.y + dy;
@@ -559,7 +559,7 @@ void SensorCoveragePlanner3D::UpdateGlobalRepresentation()
   Eigen::Vector3d pointcloud_manager_neighbor_cells_origin =
       pd_.planning_env_->GetPointCloudManagerNeighborCellsOrigin();
   geometry_msgs::PointStamped pointcloud_manager_neighbor_cells_origin_point;
-  pointcloud_manager_neighbor_cells_origin_point.header.frame_id = "map";
+  pointcloud_manager_neighbor_cells_origin_point.header.frame_id = "world";
   pointcloud_manager_neighbor_cells_origin_point.header.stamp = ros::Time::now();
   pointcloud_manager_neighbor_cells_origin_point.point.x = pointcloud_manager_neighbor_cells_origin.x();
   pointcloud_manager_neighbor_cells_origin_point.point.y = pointcloud_manager_neighbor_cells_origin.y();
@@ -606,7 +606,7 @@ void SensorCoveragePlanner3D::PublishGlobalPlanningVisualization(
     const exploration_path_ns::ExplorationPath& global_path, const exploration_path_ns::ExplorationPath& local_path)
 {
   nav_msgs::Path global_path_full = global_path.GetPath();
-  global_path_full.header.frame_id = "map";
+  global_path_full.header.frame_id = "world";
   global_path_full.header.stamp = ros::Time::now();
   global_path_full_publisher_.publish(global_path_full);
   // Get the part that connects with the local path
@@ -661,7 +661,7 @@ void SensorCoveragePlanner3D::PublishGlobalPlanningVisualization(
     last_pose.pose.position.z = local_path.nodes_.back().position_.z();
     global_path_trim.poses.push_back(last_pose);
   }
-  global_path_trim.header.frame_id = "map";
+  global_path_trim.header.frame_id = "world";
   global_path_trim.header.stamp = ros::Time::now();
   global_path_publisher_.publish(global_path_trim);
 
@@ -670,7 +670,7 @@ void SensorCoveragePlanner3D::PublishGlobalPlanningVisualization(
   pd_.grid_world_->GetMarker(pd_.grid_world_marker_->marker_);
   pd_.grid_world_marker_->Publish();
   nav_msgs::Path full_path = pd_.exploration_path_.GetPath();
-  full_path.header.frame_id = "map";
+  full_path.header.frame_id = "world";
   full_path.header.stamp = ros::Time::now();
   // exploration_path_publisher_.publish(full_path);
   pd_.exploration_path_.GetVisualizationCloud(pd_.exploration_path_cloud_->cloud_);
@@ -699,7 +699,7 @@ void SensorCoveragePlanner3D::PublishLocalPlanningVisualization(const exploratio
   pd_.viewpoint_vis_cloud_->Publish();
   pd_.lookahead_point_cloud_->Publish();
   nav_msgs::Path local_tsp_path = local_path.GetPath();
-  local_tsp_path.header.frame_id = "map";
+  local_tsp_path.header.frame_id = "world";
   local_tsp_path.header.stamp = ros::Time::now();
   local_tsp_path_publisher_.publish(local_tsp_path);
   pd_.local_coverage_planner_->GetSelectedViewPointVisCloud(pd_.selected_viewpoint_vis_cloud_->cloud_);

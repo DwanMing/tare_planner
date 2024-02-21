@@ -140,7 +140,8 @@ public:
         rolling_occupancy_grid_->UpdateOccupancy<PCLPointType>(cloud);
         rolling_occupancy_grid_->RayTrace(robot_position_);
         rolling_occupancy_grid_->GetVisualizationCloud(rolling_occupancy_grid_cloud_->cloud_);
-        // rolling_occupancy_grid_cloud_->Publish();
+        // DPM:展示rolling_occupancy_grid_cloud_ 亮度FREE:1, OCCUPIED:0
+        rolling_occupancy_grid_cloud_->Publish();
       }
     }
   }

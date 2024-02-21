@@ -320,6 +320,8 @@ void RollingOccupancyGrid::GetFrontier(pcl::PointCloud<pcl::PointXYZI>::Ptr& fro
     {
       continue;
     }
+    // 根据周围点判断该点是否为frontier 
+    // DPM:似乎会得到不少被FREE包围的错误frontier
     int array_ind = rolling_grid_->GetArrayInd(cur_sub);
     if (occupancy_array_->GetCellValue(array_ind) == UNKNOWN)
     {

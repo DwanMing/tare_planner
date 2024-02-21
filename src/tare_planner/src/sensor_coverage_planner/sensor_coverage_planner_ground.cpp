@@ -552,6 +552,7 @@ void SensorCoveragePlanner3D::UpdateGlobalRepresentation()
   }
 
   pd_.planning_env_->UpdateRobotPosition(pd_.robot_position_);
+  // 展示边界
   pd_.planning_env_->GetVisualizationPointCloud(pd_.point_cloud_manager_neighbor_cloud_->cloud_);
   pd_.point_cloud_manager_neighbor_cloud_->Publish();
 

@@ -44,7 +44,7 @@ rolling_occupancy_grid/resolution_x : 0.3
 rolling_occupancy_grid/resolution_y : 0.3
 rolling_occupancy_grid/resolution_z : 0.3
 
-kSurfaceCloudDwzLeafSize : 0.5
+kSurfaceCloudDwzLeafSize : 0.3
 kCollisionCloudDwzLeafSize : 0.2
 kKeyposeCloudStackNum : 5
 kPointCloudRowNum : 50
@@ -67,16 +67,17 @@ keypose_graph/kAddEdgeCollisionCheckRadius : 0.4
 keypose_graph/kAddEdgeCollisionCheckPointNumThr : 1
 
 # ViewPointManager
-viewpoint_manager/number_x : 40
-viewpoint_manager/number_y : 40
+# kLocalPlanningHorizonSizeX = viewpoint_num_x * viewpoint_resolution_x;
+viewpoint_manager/number_x : 50
+viewpoint_manager/number_y : 50
 viewpoint_manager/number_z : 1
-viewpoint_manager/resolution_x : 1.2
-viewpoint_manager/resolution_y : 1.2
+viewpoint_manager/resolution_x : 0.6
+viewpoint_manager/resolution_y : 0.6
 viewpoint_manager/resolution_z : 0.0
 kConnectivityHeightDiffThr : 0.25
 kGreedyViewPointSampleRange : 3
 kLocalPathOptimizationItrMax : 10
-kViewPointCollisionMargin : 0.7
+kViewPointCollisionMargin : 0.5
 kViewPointCollisionMarginZPlus : 0.5
 kViewPointCollisionMarginZMinus : 0.5
 kCollisionGridZScale : 1.0
@@ -93,12 +94,12 @@ kCollisionFrameCountMax : 3
 kSensorRange : 15.0
 kNeighborRange : 3.0
 kCoverageOcclusionThr : 0.3
-kCoverageDilationRadius : 1.0
+kCoverageDilationRadius : 0.5
 
 # Grid World
-kGridWorldXNum : 121
-kGridWorldYNum : 121
-kGridWorldZNum : 121
+kGridWorldXNum : 12
+kGridWorldYNum : 12
+kGridWorldZNum : 12
 kGridWorldCellHeight : 3.0
 kGridWorldNearbyGridNum : 5
 kMinAddPointNumSmall : 40
@@ -112,7 +113,7 @@ kCellUnknownToExploringThr: 1
 
 # Visualization
 kExploringSubspaceMarkerColorGradientAlpha : true
-kExploringSubspaceMarkerColorMaxAlpha : 0.8
+kExploringSubspaceMarkerColorMaxAlpha : 0.5
 kExploringSubspaceMarkerColorR : 0.0
 kExploringSubspaceMarkerColorG : 1.0
 kExploringSubspaceMarkerColorB : 0.0

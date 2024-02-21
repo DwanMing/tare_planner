@@ -172,8 +172,13 @@ void TAREVisualizer::GetGlobalSubspaceMarker(const std::unique_ptr<grid_world_ns
     color.g = 1.0;
     color.b = 0.0;
     if (kExploringSubspaceMarkerColorGradientAlpha)
-    {
-      color.a = ((cell_num - i) * 1.0 / cell_num) * kExploringSubspaceMarkerColorMaxAlpha;
+    { 
+      // DPM: 提高了亮度
+      color.a = ((cell_num - i) * 1.0 / cell_num) * kExploringSubspaceMarkerColorMaxAlpha + 0.5;
+      if(color.a > 1.0)
+      {
+        color.a = 1.0;
+      }
     }
     else
     {
